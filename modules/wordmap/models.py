@@ -7,7 +7,7 @@ class Word(models.Model):
     word = models.CharField(verbose_name='単語名', max_length=255, unique=True, blank=False, null=False)
     description = models.TextField(verbose_name='説明')
     category = models.ManyToManyField('Category', verbose_name='カテゴリ')
-    updated_at = models.DateTimeField(verbose_name='最終更新日', null=False, blank=False, auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name='最終更新日', null=False, blank=False, auto_now=True)
     creator = models.ForeignKey(User, verbose_name='作成者', related_name='created_words')
     last_editor = models.ForeignKey(User, verbose_name='最終更新者', related_name='last_edited_words')
 
