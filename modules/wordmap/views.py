@@ -1,7 +1,6 @@
 from django.shortcuts import render
 
-import django_filters
-from rest_framework import viewsets, filters
+from rest_framework import viewsets, generics
 
 from .models import Word
 from .serializer import WordSerializer
@@ -13,5 +12,14 @@ def index(request):
 
 class WordViewSet(viewsets.ModelViewSet):
 
-    queryset = Word.objects.all()
     serializer_class = WordSerializer
+    queryset = Word.get_all_words()
+
+
+class WordFilterViewSet(generics.ListAPIView):
+
+    serializer_class = WordSerializer
+
+    def get_queryset(self):
+        query_word = self.kwargs['query_word']
+        return Word.get_word_by_like(query_word)

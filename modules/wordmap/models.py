@@ -14,6 +14,14 @@ class Word(models.Model):
     def __str__(self):
         return '{}: {}'.format(self.id, self.word)
 
+    @classmethod
+    def get_all_words(cls):
+        return cls.objects.all()
+
+    @classmethod
+    def get_word_by_like(cls, search_word):
+        return cls.objects.filter(word__contains=search_word).order_by('word')
+
 
 class Category(models.Model):
 

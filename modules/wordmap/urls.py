@@ -4,7 +4,9 @@ from rest_framework import routers
 from . import views
 
 urlpatterns = [
-    url('^$', views.index, name='index')
+    url('^$', views.index, name='index'),
+    url(r'words_filter/(?P<query_word>\w+)/?$', views.WordFilterViewSet.as_view(), name='api_words_filter')
+
 ]
 
 router = routers.DefaultRouter()
