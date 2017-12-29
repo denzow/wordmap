@@ -1,26 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>WordMap</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-</head>
-<body>
+{% extends 'wordmap/base.html' %}
+{% load static %}
 
+{% block title %} Word Map {%endblock%}
+
+{% block content %}
 {% verbatim %}
-<div id="app">
-  <p>{{ message }}</p>
+
+
+<div id="search-box">
+    <p><input v-model="input" v-on:keydown="change" type="text"></p>
+    <p>検索ワード ： {{ search_word }}</p>
+    <hr/>
+    <div>
+        <ol>
+            <result-list v-for="result in resultList" :result-item="result"></result-list>
+        </ol>
+    <div>
 </div>
+
 {% endverbatim %}
+{% endblock content %}
+{% block vuescript %}
+<script src="{% static "js/index.js" %}"></script>
+{% endblock vuescript %}
 
 
-<script type="text/javascript">
-    var app = new Vue({
-      el: '#app',
-      data: {
-        message: 'Hello Vue.js!'
-      }
-    })
-</script>
-</body>
-</html>
