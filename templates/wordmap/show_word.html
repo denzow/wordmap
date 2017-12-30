@@ -1,0 +1,18 @@
+{% extends 'wordmap/base.html' %}
+{% load static %}
+
+{% block title %} Word {{ word_name }} {%endblock%}
+
+{% block content %}
+{% verbatim %}
+
+
+
+
+{% endverbatim %}
+{% endblock content %}
+{% block vuescript %}
+<script src="{% static "js/index.js" %}"></script>
+{% endblock vuescript %}
+
+

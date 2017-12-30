@@ -8,12 +8,12 @@
 
 
 <div id="search-box">
-    <p><input v-model="input" v-on:keydown="change" type="text"></p>
+    <p><input v-model="input" v-on:input="change" type="text"></p>
     <p>検索ワード ： {{ search_word }}</p>
     <hr/>
     <div>
         <ol>
-            <result-list v-for="result in resultList" :result-item="result"></result-list>
+            <result-list v-for="result in resultList" v-bind:result-item="result"></result-list>
         </ol>
     <div>
 </div>
