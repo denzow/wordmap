@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.db.models.functions import Length
 
 
 class Word(models.Model):
@@ -20,7 +21,7 @@ class Word(models.Model):
 
     @classmethod
     def get_word_by_like(cls, search_word):
-        return cls.objects.filter(word__contains=search_word).order_by('word')
+        return cls.objects.filter(word__contains=search_word).order_by(Length('word'))
 
 
 class Category(models.Model):
